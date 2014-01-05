@@ -2,24 +2,27 @@ require 'spec_helper'
 
 describe Game do
 
-  context 'creating games' do
-    it 'stores it in a hash' do
-      expect {
-        Game.store("12345678")
-      }.to_not raise_error
-    end
+  before do
+    Game.store(:game_1)
   end
 
-  context 'getting games' do
-    before do
-      Game.store(:game_1)
-    end
+  it 'stores a new game' do
+    expect {
+      Game.store("12345678")
+    }.to_not raise_error
+  end
 
-    it 'retrieves the game' do
-      expect(
-        Game.get_instance(:game_1)
-      ).to be_kind_of(Game::Environment)
-    end
+  it 'retrieves the stored game' do
+    expect(
+      Game.get_instance(:game_1)
+    ).to be_kind_of(Game::Environment)
+  end
+
+  it 'deletes the games from the hash' do
+    Game.finish(:game_1)
+    expect(
+      Game.get_instance(:game_1)
+    ).to be_nil
   end
 
 end

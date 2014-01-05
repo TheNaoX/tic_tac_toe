@@ -9,5 +9,9 @@ module Game
     def get_instance(session)
       @@games[session]
     end
+
+    def finish(session)
+      @@games.delete(session)
+    end
   end
 end
