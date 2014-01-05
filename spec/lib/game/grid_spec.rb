@@ -13,4 +13,9 @@ describe Game::Grid do
     expect(grid.free_rows.size).to eq(8)
   end
 
+  it 'saves a location' do
+    grid.assign(:a1, :nought)
+    expect(grid.free_rows.size).to eq(5)
+  end
+
 end
