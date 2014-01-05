@@ -2,7 +2,7 @@ module Game
   class Environment
     attr_reader :shape_type
 
-    def initialize(shape_type)
+    def initialize(shape_type=:cross)
       @shape_type = shape_type
       @types = {
         nought: :cross,
