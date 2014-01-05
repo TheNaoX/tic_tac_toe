@@ -34,5 +34,11 @@ module Game
     def assign(coordinate, type)
       @field[coordinate] = type
     end
+
+    def free_spaces
+      hash = @field.select do
+        |k,v| v.nil?
+      end.map { |k,v| k }
+    end
   end
 end
